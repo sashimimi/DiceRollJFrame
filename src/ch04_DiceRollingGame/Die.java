@@ -30,6 +30,11 @@ public class Die
 		this.dieNum = dieNum;
 	}
 	
+	/**
+	 * Generates a random number using the Math.random static method.
+	 * 
+	 * @return  the random number
+	 */
 	public int genRandNum()
 	{
 		int num = ((int)(Math.random() * 100) % 6 + 1);

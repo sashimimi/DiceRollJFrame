@@ -30,6 +30,11 @@ public class CustomDialog extends JFrame implements ActionListener
 	private JLabel diceLabel;
 	private int d1 = 0, d2 = 0, d3 = 0, d4 = 0, d5 = 0;
 	
+	/**
+	 * Constructor to create a new custom dialog with specific settings.
+	 * 
+	 * @param message  the first randomized combination of dice rolls
+	 */
 	public CustomDialog(String message)
 	{
 		buildDialog(message);
@@ -39,6 +44,12 @@ public class CustomDialog extends JFrame implements ActionListener
 		setVisible(true);
 	}
 	
+	/**
+	 * Builds the custom dialog message with six buttons, 5 "reroll dice" buttons and 1 "finish" button.
+	 * It also assigns actions to the various buttons.
+	 * 
+	 * @param message  the first randomized combination of dice rolls
+	 */
 	private void buildDialog(String message)
 	{
 		dice1 = new JButton("Reroll Dice #1");
@@ -91,14 +102,27 @@ public class CustomDialog extends JFrame implements ActionListener
 		pack();
 	}
 	
+	/**
+	 * Changes the label text to a new number depending on what button was pressed.
+	 * 
+	 * @param dieNum  the random number to change the label to
+	 * @param index  where in the result string to place the dieNum
+	 * @param message  the original message to change
+	 * @return string to change the value of the label
+	 */
 	private String changeLabel(int dieNum, int index, String message)
 	{
 		List<String> split = new ArrayList<String>(Arrays.asList(message.split(", ")));
 		split.set(index, String.valueOf(dieNum));
 		return String.join(", ", split);
 	}
-
-	public void actionPerformed(ActionEvent e) //TODO: make this less repetitive someday
+	
+	/**
+	 * Checks for button clicks and changes the specific label the user requested to a random number.
+	 * 
+	 * @param e  the ActionEvent
+	 */
+	public void actionPerformed(ActionEvent e)
 	{
 		String cmd = e.getActionCommand();
 		
@@ -158,6 +182,6 @@ public class CustomDialog extends JFrame implements ActionListener
 			}
 		}
 		else if (cmd.equals("finish"))
-			System.exit(0); // I wanted to be able to repeat the 5 dice rolls :(
+			System.exit(0);
 	}
 }
